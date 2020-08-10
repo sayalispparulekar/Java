@@ -1,4 +1,6 @@
 package com.javalearning;
+import java.util.Queue;
+import java.util.LinkedList;
 
 class Node{
     int data ;
@@ -52,6 +54,21 @@ public class BinaryTree {
             printLevel(root.right, level - 1);
         }
     }
+    void printTreeQueue(){
+        Queue<Node> queue = new LinkedList<Node>();
+        queue.add(root);
+        while(!queue.isEmpty()){
+            Node temp = queue.poll();
+            System.out.print(temp.data + " ");
+            if(temp.left != null) {
+                queue.add(temp.left);
+            }
+            if (temp.right != null) {
+                queue.add(temp.right);
+            }
+
+        }
+    }
     public static void main(String[] args) {
 
      BinaryTree tree = new BinaryTree();
@@ -63,6 +80,7 @@ public class BinaryTree {
 
 	 System.out.println("Breadth First Search Traversal :");
 	 tree.PrintTree();
-
+	 System.out.println("\nBreadth First Search Traversal using queue :");
+	 tree.printTreeQueue();
     }
 }
